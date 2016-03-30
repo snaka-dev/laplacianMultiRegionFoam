@@ -58,7 +58,9 @@ int main(int argc, char *argv[])
         {
             solve
             (
-                fvm::ddt(T) - fvm::laplacian(DT, T)
+                fvm::ddt(T)
+              - fvm::laplacian(DT, T)
+              - (fvc::grad(T) & fvc::grad(DT))
             );
         }
 
